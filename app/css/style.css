@@ -245,5 +245,48 @@ header.navigation {
   #gallery #gallery-pic figure.not-current {
     display: none; }
 
+.accordion-tabs-minimal {
+  line-height: 1.5;
+  padding: 0; }
+  .accordion-tabs-minimal::after {
+    clear: both;
+    content: "";
+    display: table; }
+  .accordion-tabs-minimal .tab-header-and-content {
+    list-style: none; }
+    @media screen and (min-width: 40em) {
+      .accordion-tabs-minimal .tab-header-and-content {
+        display: inline; } }
+  .accordion-tabs-minimal .tab-link {
+    background-color: #fff;
+    border-top: 1px solid #dcdcdc;
+    color: #333;
+    display: block;
+    padding: 0.75em 1.618em;
+    text-decoration: none; }
+    @media screen and (min-width: 40em) {
+      .accordion-tabs-minimal .tab-link {
+        border-top: 0;
+        display: inline-block; } }
+    .accordion-tabs-minimal .tab-link:hover {
+      color: #477dca; }
+    .accordion-tabs-minimal .tab-link:focus {
+      outline: none; }
+    .accordion-tabs-minimal .tab-link.is-active {
+      border-bottom: 0; }
+      @media screen and (min-width: 40em) {
+        .accordion-tabs-minimal .tab-link.is-active {
+          border: 1px solid #dcdcdc;
+          border-bottom-color: #fff;
+          margin-bottom: -1px; } }
+  .accordion-tabs-minimal .tab-content {
+    display: none;
+    padding: 1.5em 1.618em;
+    width: 100%; }
+    @media screen and (min-width: 40em) {
+      .accordion-tabs-minimal .tab-content {
+        border-top: 1px solid #dcdcdc;
+        float: left; } }
+
 footer {
   margin-top: 20px; }

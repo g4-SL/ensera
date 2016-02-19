@@ -15,7 +15,7 @@
 		</div>
 		<ul class="browse-category">
 			<li class="category-wrapper">
-				<a>
+				<a href="./gallery#textures">
 					<img src="images/test1.jpg" width="100%" alt="">
 				</a>
 				<h4>Textures</h4>
