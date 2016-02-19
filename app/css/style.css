@@ -12,6 +12,9 @@ body {
   background-repeat: no-repeat;
   margin: 0; }
 
+figure {
+  margin: 0; }
+
 header.navigation {
   border-bottom: 1px solid #c0aeaa;
   padding-top: 10px;
@@ -126,15 +129,15 @@ header.navigation {
 
 #base ul.browse-category {
   display: inline-block;
-  position: relative;
   margin: 0;
   padding: 0;
+  position: relative;
   margin-top: 15px; }
   #base ul.browse-category li {
     display: inline-block;
-    position: relative;
     margin: 0 8px 0 0;
-    padding: 0; }
+    padding: 0;
+    position: relative; }
     #base ul.browse-category li:last-of-type {
       margin-right: 0; }
     #base ul.browse-category li a {
@@ -150,18 +153,19 @@ header.navigation {
     #base ul.browse-category li a > img {
       border: 1px solid #d6cac7;
       display: block;
-      padding: 4px; }
+      padding: 4px;
+      width: 100%; }
 
 #gallery nav > ul {
   display: inline-block;
-  position: relative;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  position: relative; }
   #gallery nav > ul li {
     display: inline-block;
-    position: relative;
     margin: 0 8px 0 0;
-    padding: 0; }
+    padding: 0;
+    position: relative; }
     #gallery nav > ul li:last-of-type {
       margin-right: 0; }
     #gallery nav > ul li a {
@@ -173,14 +177,15 @@ header.navigation {
   margin-right: 2.35765%;
   width: 31.76157%;
   display: inline-block;
-  margin: 0; }
+  margin-bottom: 20px; }
   #gallery #gallery-pic figure:last-child {
     margin-right: 0; }
   #gallery #gallery-pic figure a > img {
     border: 1px solid #d6cac7;
     display: block;
-    padding: 4px; }
+    padding: 4px;
+    width: 100%; }
   #gallery #gallery-pic figure.current {
-    display: block; }
+    display: inline-block; }
   #gallery #gallery-pic figure.not-current {
     display: none; }

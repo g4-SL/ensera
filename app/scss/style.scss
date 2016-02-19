@@ -3,14 +3,14 @@
 
 @mixin horizontal-list($list-margin: 0 8px 0 0) {
   display: inline-block;
-  position: relative;
   margin: 0;
   padding: 0;
+  position: relative;
   li {
     display: inline-block;
-    position: relative;
     margin: $list-margin;
     padding: 0;
+    position: relative;
     &:last-of-type {margin-right: 0;}
     a {
       display: inline-block;
@@ -18,21 +18,29 @@
   }
 }
 
-@mixin border-img-link() {
+@mixin border-img-link {
   a > img{
     border: 1px solid #d6cac7;
     display: block;
     padding: 4px;
+    width: 100%;
   }
 }
 
-body{
+@mixin omega-reset($nth) {
+  &:nth-child(#{$nth}) { margin-right: flex-gutter(); }
+  &:nth-child(#{$nth}+1) { clear: none }
+}
+
+body {
   @include background-image(url("/images/header-bg.png"));
   background-color: #ebe3e1;
   background-position: center top;
   background-repeat: no-repeat;
 	margin: 0;
 }
+
+figure {margin: 0;}
 
 header.navigation {
   $base-border-color: gainsboro !default;
@@ -209,10 +217,10 @@ header.navigation {
       @include span-columns(4);
       @include border-img-link;
       display: inline-block;
-      margin: 0;
+      margin-bottom: 20px;
 
       &.current {
-        display: block;
+        display: inline-block; 
       }
       &.not-current {
         display: none;

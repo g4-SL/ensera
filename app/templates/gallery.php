@@ -13,7 +13,7 @@
 		<section id="gallery-pic">
 	        <figure class="textures">
 		        <a href="#">
-		            <img src="images/tx.jpg" alt="" />
+		            <img src="./images/tx.jpg" alt="" />
 		        </a>  
 		    </figure>
 	        <figure class="sculptures">
@@ -28,7 +28,32 @@
 		    </figure>
 	        <figure class="sculptures">
 		        <a href="#">
-		            <img src="images/sc.jpg" alt="" />
+		            <img src="images/sc-2.jpg" alt="" />
+		        </a>  
+		    </figure>
+	        <figure class="masks">
+		        <a href="#">
+		            <img src="images/ms-2.jpg" alt="" />
+		        </a>  
+		    </figure>
+	        <figure class="sculptures">
+		        <a href="#">
+		            <img src="images/sc-3.jpg" alt="" />
+		        </a>  
+		    </figure>
+	        <figure class="sculptures">
+		        <a href="#">
+		            <img src="images/sc-4.jpg" alt="" />
+		        </a>  
+		    </figure>
+	        <figure class="masks">
+		        <a href="#">
+		            <img src="images/ms-3.jpg" alt="" />
+		        </a>  
+		    </figure>
+	        <figure class="sculptures">
+		        <a href="#">
+		            <img src="images/sc-5.jpg" alt="" />
 		        </a>  
 		    </figure>
 		</section> 
