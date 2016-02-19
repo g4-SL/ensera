@@ -1,9 +1,22 @@
 @import "bourbon";
 @import "neat";
 
-@mixin horizontal-list($list-margin: 0 8px 0 0) {
+$default-dark-colour: #d6cac7;
+$default-margin: 20px;
+$mobile-size: em(480);
+$tablet-size: em(720);
+$desktop-size: em(960);
+$largedesktop-size: em(1050);
+
+$mobile: new-breakpoint(max-width $mobile-size 12);
+$tablet: new-breakpoint(min-width $mobile-size max-width $tablet-size 12);
+$desktop: new-breakpoint(min-width $tablet-size max-width $desktop-size 12);
+$largedesktop: new-breakpoint(min-width $largedesktop-size 12);
+
+@mixin horizontal-list($list-margin: 0 8px 0 0, $margin-btm-ul: 0) {
   display: inline-block;
   margin: 0;
+  margin-bottom: $margin-btm-ul;
   padding: 0;
   position: relative;
   li {
@@ -20,7 +33,7 @@
 
 @mixin border-img-link {
   a > img{
-    border: 1px solid #d6cac7;
+    border: 1px solid $default-dark-colour;
     display: block;
     padding: 4px;
     width: 100%;
@@ -30,6 +43,11 @@
 @mixin omega-reset($nth) {
   &:nth-child(#{$nth}) { margin-right: flex-gutter(); }
   &:nth-child(#{$nth}+1) { clear: none }
+}
+
+h4{
+  margin: 0;
+  text-transform: uppercase;
 }
 
 body {
@@ -50,7 +68,7 @@ header.navigation {
   $large-screen: em(860) !default;
   $font-size: 12pt;
   $navigation-padding: 1em;
-  $navigation-background: #d6cac7;
+  $navigation-background: $default-dark-colour;
   $navigation-color: transparentize(black, 0.3);
   $navigation-color-hover: white;
   $navigation-height: 100px;
@@ -186,31 +204,56 @@ header.navigation {
 
 #wrapper{
   @include outer-container(100%);
-	max-width: 1100px;
+	max-width: 1050px;
 	padding: 35px 25px;
 }
 
 .container {
-    @include row;
-    padding-top: 20px;
+  @include row;
+  padding-top: 20px;
 }
 
 #base {
+  #highlight {
+    margin-bottom: $default-margin;
+  }
+  #brief {
+    @include span-columns(9);
+    @include shift(1.5);
+    text-align: center;
+  }
   ul.browse-category {
     @include horizontal-list;
-    margin-top: 15px;
+    margin-top: $default-margin;
     
     li {
       @include span-columns(4);
       @include border-img-link;
       text-align: center;
+
+      @include media ($mobile) {
+        @include fill-parent;
+      }
     }
   }
 }
 
 #gallery {
-  nav > ul {
-    @include horizontal-list;
+  nav {
+    text-align: center;
+
+    ul {
+      @include fill-parent;
+      @include horizontal-list(0 20px 0 0, 20px);
+      border: 1px solid darken($default-dark-colour, 10);
+      padding: 2px;
+
+      li {
+        @include span-columns(36 of 144);
+        border: 1px solid darken($default-dark-colour, 10);
+        padding: 7px 0;
+      }
+    }
   }
   #gallery-pic {
     figure {
@@ -218,6 +261,16 @@ header.navigation {
       @include border-img-link;
       display: inline-block;
       margin-bottom: 20px;
+
+      @include media ($mobile) {
+        @include fill-parent;
+      }
+
+      @include media ($tablet) {
+        @include span-columns(6);
+        @include omega-reset(2n);
+        @include omega(2n);
+      }
 
       &.current {
         display: inline-block; 
@@ -227,4 +280,8 @@ header.navigation {
       }
     }
   }
+}
+
+footer {
+  margin-top: $default-margin;
 }
