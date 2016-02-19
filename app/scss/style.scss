@@ -1,0 +1,222 @@
+@import "bourbon";
+@import "neat";
+
+@mixin horizontal-list($list-margin: 0 8px 0 0) {
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  li {
+    display: inline-block;
+    position: relative;
+    margin: $list-margin;
+    padding: 0;
+    &:last-of-type {margin-right: 0;}
+    a {
+      display: inline-block;
+    }
+  }
+}
+
+@mixin border-img-link() {
+  a > img{
+    border: 1px solid #d6cac7;
+    display: block;
+    padding: 4px;
+  }
+}
+
+body{
+  @include background-image(url("/images/header-bg.png"));
+  background-color: #ebe3e1;
+  background-position: center top;
+  background-repeat: no-repeat;
+	margin: 0;
+}
+
+header.navigation {
+  $base-border-color: gainsboro !default;
+  $base-border-radius: 3px !default;
+  $action-color: #477DCA !default;
+  $dark-gray: #333 !default;
+  $large-screen: em(860) !default;
+  $font-size: 12pt;
+  $navigation-padding: 1em;
+  $navigation-background: #d6cac7;
+  $navigation-color: transparentize(black, 0.3);
+  $navigation-color-hover: white;
+  $navigation-height: 100px;
+  $navigation-nav-button-background: $action-color;
+  $navigation-nav-button-background-hover: lighten($navigation-background, 10%);
+  $navigation-nav-button-border: 1px solid lighten($navigation-nav-button-background, 20%);
+  $navigation-search-background: lighten($navigation-background, 5);
+  $navigation-search-border: 1px solid darken($navigation-background, 5);
+  $navigation-active-link-color: transparentize(white, 0.5);
+  $horizontal-bar-mode: $large-screen;
+
+  border-bottom: 1px solid darken($navigation-background, 10);
+  padding-top: 10px;
+  min-height: $navigation-height;
+  width: 100%;
+  z-index: 999;
+
+  .navigation-wrapper {
+    @include clearfix;
+    @include outer-container;
+    position: relative;
+    z-index: 9999;
+  }
+
+  .logo {
+    float: left;
+    max-height: $navigation-height;
+    padding-left: $navigation-padding;
+    padding-right: 2em;
+
+    img {
+      max-height: $navigation-height;
+      padding: .8em 0;
+    }
+  }
+
+  // Mobile view
+
+  .navigation-menu-button {
+    color: $navigation-color;
+    display: block;
+    float: right;
+    line-height: $navigation-height;
+    margin: 0;
+    padding-right: 1em;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    @include media ($horizontal-bar-mode) {
+      display: none;
+    }
+
+    &:focus,
+    &:hover {
+      color: $navigation-color-hover;
+    }
+  }
+
+  // Nav menu
+
+  nav {
+    float: none;
+    min-height: $navigation-height;
+    z-index: 9999999;
+
+    @include media ($horizontal-bar-mode) {
+      float: right;
+    }
+  }
+
+  ul.navigation-menu {
+    clear: both;
+    display: none;
+    margin: 0 auto;
+    overflow: visible;
+    padding: 0;
+    width: 100%;
+    z-index: 9999;
+
+    &.show {
+      display: block;
+    }
+
+    @include media ($horizontal-bar-mode) {
+      display: inline;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  // The nav items
+
+  ul li.nav-link {
+    background: $navigation-background;
+    display: block;
+    font-size: $font-size;
+    line-height: $navigation-height;
+    overflow: hidden;
+    text-align: right;
+    width: 100%;
+    z-index: 9999;
+
+    @include media ($horizontal-bar-mode) {
+      background: transparent;
+      display: inline;
+      line-height: $navigation-height;
+      text-decoration: none;
+      width: auto;
+    }
+
+    &:not(:last-child){
+      margin-right: 40px;
+    }
+
+    a {
+      color: $navigation-color;
+      display: inline-block;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      &:focus,
+      &:hover {
+        color: $navigation-color-hover;
+      }
+    }
+  }
+
+  .active-nav-item a {
+    border-bottom: 1px solid $navigation-active-link-color;
+    padding-bottom: 3px;
+  }
+}
+
+#wrapper{
+  @include outer-container(100%);
+	max-width: 1100px;
+	padding: 35px 25px;
+}
+
+.container {
+    @include row;
+    padding-top: 20px;
+}
+
+#base {
+  ul.browse-category {
+    @include horizontal-list;
+    margin-top: 15px;
+    
+    li {
+      @include span-columns(4);
+      @include border-img-link;
+      text-align: center;
+    }
+  }
+}
+
+#gallery {
+  nav > ul {
+    @include horizontal-list;
+  }
+  #gallery-pic {
+    figure {
+      @include span-columns(4);
+      @include border-img-link;
+      display: inline-block;
+      margin: 0;
+
+      &.current {
+        display: block;
+      }
+      &.not-current {
+        display: none;
+      }
+    }
+  }
+}
