@@ -5,47 +5,47 @@
 				{
 					"title": "",
 					"image": "./images/tx.jpg",
-					"type" : "texture"
+					"type" : "textures"
 				},
 				{
 					"title": "",
 					"image": "./images/sc.jpg",
-					"type" : "sculpture"
+					"type" : "sculptures"
 				},
 				{
 					"title": "",
 					"image": "./images/ms.jpg",
-					"type" : "mask"
+					"type" : "masks"
 				},
 				{
 					"title": "",
 					"image": "./images/sc-2.jpg",
-					"type" : "sculpture"
+					"type" : "sculptures"
 				},
 				{
 					"title": "",
 					"image": "./images/ms-2.jpg",
-					"type" : "mask"
+					"type" : "masks"
 				},
 				{
 					"title": "",
 					"image": "./images/sc-3.jpg",
-					"type" : "sculpture"
+					"type" : "sculptures"
 				},
 				{
 					"title": "",
 					"image": "./images/sc-4.jpg",
-					"type" : "sculpture"
+					"type" : "sculptures"
 				},
 				{
 					"title": "",
 					"image": "./images/ms-3.jpg",
-					"type" : "mask"
+					"type" : "masks"
 				},
 				{
 					"title": "",
 					"image": "./images/sc-5.jpg",
-					"type" : "sculpture"
+					"type" : "sculptures"
 				}
 			]
 		}

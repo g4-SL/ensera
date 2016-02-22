@@ -207,86 +207,52 @@ header.navigation {
       #gallery nav ul li:last-child {
         margin-right: 0; }
 
-#gallery #gallery-pic figure {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 31.76157%;
-  display: inline-block;
-  margin-bottom: 20px; }
-  #gallery #gallery-pic figure:last-child {
-    margin-right: 0; }
-  #gallery #gallery-pic figure a > img {
-    border: 1px solid #d6cac7;
-    display: block;
-    padding: 4px;
-    width: 100%; }
-  @media screen and (max-width: 30em) {
-    #gallery #gallery-pic figure {
-      width: 100%; } }
-  @media screen and (min-width: 30em) and (max-width: 45em) {
-    #gallery #gallery-pic figure {
-      float: left;
-      display: block;
-      margin-right: 2.35765%;
-      width: 48.82117%; }
-      #gallery #gallery-pic figure:last-child {
-        margin-right: 0; }
-      #gallery #gallery-pic figure:nth-child(2n) {
-        margin-right: 2.35765%; }
-      #gallery #gallery-pic figure:nth-child(2n+1) {
-        clear: none; }
-      #gallery #gallery-pic figure:nth-child(2n) {
-        margin-right: 0; }
-      #gallery #gallery-pic figure:nth-child(2n+1) {
-        clear: left; } }
-  #gallery #gallery-pic figure.current {
-    display: inline-block; }
-  #gallery #gallery-pic figure.not-current {
-    display: none; }
-
-.accordion-tabs-minimal {
-  line-height: 1.5;
-  padding: 0; }
-  .accordion-tabs-minimal::after {
+#gallery #gallery-section {
+  list-style-type: none;
+  padding-left: 0; }
+  #gallery #gallery-section::after {
     clear: both;
     content: "";
     display: table; }
-  .accordion-tabs-minimal .tab-header-and-content {
-    list-style: none; }
-    @media screen and (min-width: 40em) {
-      .accordion-tabs-minimal .tab-header-and-content {
-        display: inline; } }
-  .accordion-tabs-minimal .tab-link {
-    background-color: #fff;
-    border-top: 1px solid #dcdcdc;
-    color: #333;
+  #gallery #gallery-section li:not(.is-open) {
+    display: none; }
+  #gallery #gallery-section figure {
+    float: left;
     display: block;
-    padding: 0.75em 1.618em;
-    text-decoration: none; }
-    @media screen and (min-width: 40em) {
-      .accordion-tabs-minimal .tab-link {
-        border-top: 0;
-        display: inline-block; } }
-    .accordion-tabs-minimal .tab-link:hover {
-      color: #477dca; }
-    .accordion-tabs-minimal .tab-link:focus {
-      outline: none; }
-    .accordion-tabs-minimal .tab-link.is-active {
-      border-bottom: 0; }
-      @media screen and (min-width: 40em) {
-        .accordion-tabs-minimal .tab-link.is-active {
-          border: 1px solid #dcdcdc;
-          border-bottom-color: #fff;
-          margin-bottom: -1px; } }
-  .accordion-tabs-minimal .tab-content {
-    display: none;
-    padding: 1.5em 1.618em;
-    width: 100%; }
-    @media screen and (min-width: 40em) {
-      .accordion-tabs-minimal .tab-content {
-        border-top: 1px solid #dcdcdc;
-        float: left; } }
+    margin-right: 2.35765%;
+    width: 31.76157%;
+    display: inline-block;
+    margin-bottom: 20px; }
+    #gallery #gallery-section figure:last-child {
+      margin-right: 0; }
+    #gallery #gallery-section figure:nth-child(3n) {
+      margin-right: 0; }
+    #gallery #gallery-section figure:nth-child(3n+1) {
+      clear: left; }
+    #gallery #gallery-section figure a > img {
+      border: 1px solid #d6cac7;
+      display: block;
+      padding: 4px;
+      width: 100%; }
+    @media screen and (max-width: 30em) {
+      #gallery #gallery-section figure {
+        width: 100%; } }
+    @media screen and (min-width: 30em) and (max-width: 45em) {
+      #gallery #gallery-section figure {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 48.82117%; }
+        #gallery #gallery-section figure:last-child {
+          margin-right: 0; }
+        #gallery #gallery-section figure:nth-child(2n) {
+          margin-right: 2.35765%; }
+        #gallery #gallery-section figure:nth-child(2n+1) {
+          clear: none; }
+        #gallery #gallery-section figure:nth-child(2n) {
+          margin-right: 0; }
+        #gallery #gallery-section figure:nth-child(2n+1) {
+          clear: left; } }
 
 footer {
   margin-top: 20px; }

@@ -21,13 +21,13 @@
 				<h4>Textures</h4>
 			</li>
 			<li class="category-wrapper">
-				<a>
+				<a href="./gallery#sculptures">
 					<img src="images/test1.jpg" width="100%" alt="">
 				</a>
 				<h4>Sculptures</h4>
 			</li>
 			<li class="category-wrapper">
-				<a>
+				<a href="./gallery#masks">
 					<img src="images/test1.jpg" width="100%" alt="">
 				</a>
 				<h4>Masks</h4>
