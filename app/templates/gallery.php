@@ -1,6 +1,8 @@
 <section id="gallery">
-	<div class="container">
+	<div class="header-title">
 		<h1>Gallery</h1>
+	</div>
+	<div class="container">
 		<nav class="gallery-nav">
 			<ul>
 				<li id="all"><a href="#all">All</a></li>
@@ -28,6 +30,15 @@
 				</div>	
 			</li>
 		</ul>
+
+		<div class="modal">
+			<div class="modal-fade-screen">
+				<div class="modal-inner">
+				  <div class="modal-close"></div>
+				  <img alt="">
+				</div>
+			</div>
+		</div>
 
 	</div>
 </section>

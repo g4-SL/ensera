@@ -2,6 +2,9 @@
 @import "neat";
 
 $default-dark-colour: #d6cac7;
+$wrapper-background: #fff;
+$body-background: #731405;
+$color-pop: #bc2626;
 $default-margin: 20px;
 $mobile-size: em(480);
 $tablet-size: em(720);
@@ -27,6 +30,10 @@ $largedesktop: new-breakpoint(min-width $largedesktop-size 12);
     &:last-of-type {margin-right: 0;}
     a {
       display: inline-block;
+      font-family: 'Roboto Slab', serif;
+      letter-spacing: 2pt;
+      text-decoration: none;
+      text-transform: uppercase;
     }
   }
 }
@@ -34,6 +41,7 @@ $largedesktop: new-breakpoint(min-width $largedesktop-size 12);
 @mixin border-img-link {
   a > img{
     border: 1px solid $default-dark-colour;
+    box-shadow: 0 1px 10px #e2e2e2;
     display: block;
     padding: 4px;
     width: 100%;
@@ -45,172 +53,149 @@ $largedesktop: new-breakpoint(min-width $largedesktop-size 12);
   &:nth-child(#{$nth}+1) { clear: none }
 }
 
-h4{
+@include font-face("open-sans", "/fonts/OpenSans-Regular", $file-formats: ttf);
+
+p, h4, li {
+  font-family: 'open-sans';
+}
+
+h1 {
+  background: #e2e2e2;
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.4em;
+  letter-spacing: 2pt;
+  margin: 0;
+  padding: 15px 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.header-title {
+  @include outer-container(90%);
+  border: 1px solid $default-dark-colour;
+  margin: 20px auto;
+  padding: 3px;
+}
+
+h4 {
   margin: 0;
   text-transform: uppercase;
 }
 
+header {
+  $header-background: #1F1A16;
+  $border-color: transparentize($header-background, 0.93);
+
+  @include clearfix;
+  border-top: 5px solid #1F1A16;
+
+  #top-nav-container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    ul {
+      @include horizontal-list;
+      float: right;
+    }
+
+    img {
+      width: 16px;
+    }
+  }
+
+  #nav-container {
+    @include clearfix;
+    border-top: 2px solid $border-color;
+    border-bottom: 2px solid $border-color;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .logo {
+    float: left;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  nav {
+    @include direction-context(right-to-left) {
+
+      .navigation-menu {
+        @include horizontal-list;
+        padding: 15px 0;
+        float: right;
+
+        li {
+          margin-right: 50px;
+
+          @include media($mobile) {
+            @include fill-parent;
+          }
+
+          @include media($tablet) {
+            @include fill-parent;
+          }
+        }
+
+        a {
+          color: #191919;
+          font-size: em(14);
+          position: relative;
+
+          &:before {    
+            @include transition(all 0.3s ease-in-out 0s);
+            @include transform(scaleX(0));
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            top: -28px;
+            left: 0;
+            background-color: $color-pop;
+            visibility: hidden;
+          }
+
+          &:hover:before {
+            @include transform(scaleX(1));
+            visibility: visible;
+          }
+        }
+      }
+    }
+  }
+
+  .navigation-menu-button {
+    @include media($tablet-size) {
+      display: none;
+    }
+  }
+}
+
 body {
-  @include background-image(url("/images/header-bg.png"));
-  background-color: #ebe3e1;
-  background-position: center top;
-  background-repeat: no-repeat;
+  @include background-image(url('../images/hbg.jpg'));
 	margin: 0;
 }
 
 figure {margin: 0;}
 
-header.navigation {
-  $base-border-color: gainsboro !default;
-  $base-border-radius: 3px !default;
-  $action-color: #477DCA !default;
-  $dark-gray: #333 !default;
-  $large-screen: em(860) !default;
-  $font-size: 12pt;
-  $navigation-padding: 1em;
-  $navigation-background: $default-dark-colour;
-  $navigation-color: transparentize(black, 0.3);
-  $navigation-color-hover: white;
-  $navigation-height: 100px;
-  $navigation-nav-button-background: $action-color;
-  $navigation-nav-button-background-hover: lighten($navigation-background, 10%);
-  $navigation-nav-button-border: 1px solid lighten($navigation-nav-button-background, 20%);
-  $navigation-search-background: lighten($navigation-background, 5);
-  $navigation-search-border: 1px solid darken($navigation-background, 5);
-  $navigation-active-link-color: transparentize(white, 0.5);
-  $horizontal-bar-mode: $large-screen;
+.wrapper {
+  @include outer-container(em(800));
+  background: $wrapper-background;
 
-  border-bottom: 1px solid darken($navigation-background, 10);
-  padding-top: 10px;
-  min-height: $navigation-height;
-  width: 100%;
-  z-index: 999;
-
-  .navigation-wrapper {
-    @include clearfix;
-    @include outer-container;
-    position: relative;
-    z-index: 9999;
+  @include media($desktop-size) {
+    @include outer-container(em(900));
   }
 
-  .logo {
-    float: left;
-    max-height: $navigation-height;
-    padding-left: $navigation-padding;
-    padding-right: 2em;
-
-    img {
-      max-height: $navigation-height;
-      padding: .8em 0;
-    }
+  @include media($largedesktop-size) {
+    @include outer-container(em(1050));
   }
-
-  // Mobile view
-
-  .navigation-menu-button {
-    color: $navigation-color;
-    display: block;
-    float: right;
-    line-height: $navigation-height;
-    margin: 0;
-    padding-right: 1em;
-    text-decoration: none;
-    text-transform: uppercase;
-
-    @include media ($horizontal-bar-mode) {
-      display: none;
-    }
-
-    &:focus,
-    &:hover {
-      color: $navigation-color-hover;
-    }
-  }
-
-  // Nav menu
-
-  nav {
-    float: none;
-    min-height: $navigation-height;
-    z-index: 9999999;
-
-    @include media ($horizontal-bar-mode) {
-      float: right;
-    }
-  }
-
-  ul.navigation-menu {
-    clear: both;
-    display: none;
-    margin: 0 auto;
-    overflow: visible;
-    padding: 0;
-    width: 100%;
-    z-index: 9999;
-
-    &.show {
-      display: block;
-    }
-
-    @include media ($horizontal-bar-mode) {
-      display: inline;
-      margin: 0;
-      padding: 0;
-    }
-  }
-
-  // The nav items
-
-  ul li.nav-link {
-    background: $navigation-background;
-    display: block;
-    font-size: $font-size;
-    line-height: $navigation-height;
-    overflow: hidden;
-    text-align: right;
-    width: 100%;
-    z-index: 9999;
-
-    @include media ($horizontal-bar-mode) {
-      background: transparent;
-      display: inline;
-      line-height: $navigation-height;
-      text-decoration: none;
-      width: auto;
-    }
-
-    &:not(:last-child){
-      margin-right: 40px;
-    }
-
-    a {
-      color: $navigation-color;
-      display: inline-block;
-      text-decoration: none;
-      text-transform: uppercase;
-
-      &:focus,
-      &:hover {
-        color: $navigation-color-hover;
-      }
-    }
-  }
-
-  .active-nav-item a {
-    border-bottom: 1px solid $navigation-active-link-color;
-    padding-bottom: 3px;
-  }
-}
-
-#wrapper{
-  @include outer-container(100%);
-	max-width: 1050px;
-	padding: 35px 25px;
 }
 
 .container {
-  @include row;
-  padding-top: 20px;
+  @include fill-parent;
+  padding: 35px 25px 0;
 }
 
 #base {
@@ -252,6 +237,21 @@ header.navigation {
         @include span-columns(36 of 144);
         border: 1px solid darken($default-dark-colour, 10);
         padding: 7px 0;
+
+        a {
+          color: #000;
+          font-size: em(12);
+        }
+
+        &:hover, &.is-active {
+          @include transition(all .5s ease);
+          background: darken($default-dark-colour, 10);
+
+          a {
+            color: #fff;
+            font-style: italic;
+          }
+        }
       }
     }
   }
@@ -278,14 +278,162 @@ header.navigation {
 
       @include media ($tablet) {
         @include span-columns(6);
-        @include omega-reset(2n);
+        @include omega-reset(3n);
         @include omega(2n);
       }
     }
   }
 }
 
+#contact {
+  $v-padding-form: 7px 10px;
+
+  .row {
+    @include row;
+    margin-top: 30px;
+  }
+
+  form{
+    @include span-columns(7 of 12);
+
+    input[type="text"], input[type="email"], textarea {
+      @include span-columns(15 of 20);
+      @include omega(2n);
+    }
+
+    .label-wrapper {
+      @include span-columns(5 of 20);
+      @include background-image(url("../images/arrow.png"));
+      background-position: right center;
+      background-repeat: no-repeat;
+
+      label {
+        @include span-columns(11 of 12);
+      }
+    }
+
+    .btn-wrapper {
+      @include fill-parent;
+      text-align: right;
+    }
+  } 
+
+  #info {
+    @include span-columns(5 of 12);
+    background: #e2e2e2;
+    padding: 15px;
+  }
+
+  label {
+    background-color: $default-dark-colour;
+    border: 3px solid darken($default-dark-colour, 2);
+    color: #fff;
+    font-family: 'Roboto Slab', serif;
+    font-size: em(12);
+    font-style: italic;
+    letter-spacing: 2pt;
+    padding: $v-padding-form;
+    text-transform: uppercase;
+  }
+
+  input[type="text"], input[type="email"], textarea {
+    @include fill-parent;
+    border: 2px solid #e3e3e3;
+    font-family: 'Roboto Slab', serif;
+    font-size: em(14);
+    margin-bottom: 20px;
+    padding: $v-padding-form;
+  }
+
+  textarea {
+    height: 200px;
+  }
+
+  #map {
+    width: 100%;
+    height: 400px;
+    background-color: #CCC;
+  }
+
+}
+
+.modal{
+
+  $base-border-radius: 3px !default;
+  $modal-padding: 3em;
+  $modal-background: rgba(#000, .9);
+  $modal-close-color: #ddd;
+  $modal-image-height: 135px;
+  $modal-image-width: $modal-image-height;
+  $modal-trigger-image-width: 300px;
+
+  .modal-fade-screen {
+    @include transition(opacity 0.25s ease);
+    @include position(fixed, 0);
+    background-color: rgba(#000, .9);
+    opacity: 0;
+    padding-top: 0.6em;
+    text-align: left;
+    visibility: hidden;
+    z-index: 99999999999;
+
+    @include media($tablet-size) {
+      padding-top: 10em;
+    }
+  }
+
+  .modal-close {
+    @include position(absolute, ($modal-padding /2) ($modal-padding /2) null null);
+    @include size(1.5em);
+    background: $modal-background;
+    cursor: pointer;
+
+    &:after,
+    &:before {
+      @include position(absolute, 3px 3px 0 50%);
+      @include transform(rotate(45deg));
+      @include size(0.15em 1.5em);
+      background: $modal-close-color;
+      content: '';
+      display: block;
+      margin: -3px 0 0 -1px;
+    }
+
+    &:hover:after,
+    &:hover:before {
+      background: darken($modal-close-color, 10%);
+    }
+
+    &:before {
+      @include transform(rotate(-45deg));
+    }
+  }
+
+  .modal-inner {
+    @include transition(opacity 0.25s ease);
+    background: $modal-background;
+    border-radius: $base-border-radius;
+    margin-top: 0;
+    margin: auto;
+    max-height: 95%;
+    overflow: auto;
+    padding: $modal-padding / 2;
+    position: relative;
+    width: 95%;
+
+    @include media($mobile) {
+      max-height: 70%;
+      padding: $modal-padding;
+      width: 60%;
+    }
+
+    @include media($largedesktop) {
+      width: 50%;
+    }
+  } 
+}
 
 footer {
   margin-top: $default-margin;
+  padding-bottom: $default-margin;
 }

@@ -34,18 +34,28 @@
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/favicon.png">
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
 
 </head>
 <body>
 
-<div id="wrapper">
+<div class="wrapper">
   <header class="navigation" role="banner">
-    <div class="navigation-wrapper">
+    <div class="container" id="top-nav-container">
+      +6088-888888 | info@ensera.com
+      <ul>
+        <li><img src="../images/social/fb.png"></li>
+        <li><img src="../images/social/ig.png"></li>
+        <li><img src="../images/social/twitter.png"></li>
+      </ul>
+    </div>
+    <div class="container" id="nav-container">
       <a href="javascript:void(0)" class="logo">
         <img src="images/header.png" alt="Logo Image">
       </a>
+      <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
       <nav role="navigation">
-        <ul id="js-navigation-menu" class="navigation-menu show">
+        <ul class="navigation-menu">
           <li class="nav-link"><a href="./">Home</a></li>
           <li class="nav-link"><a href="./about">About Us</a></li>
           <li class="nav-link"><a href="./gallery">Gallery</a></li>
@@ -55,3 +65,5 @@
       </nav>
     </div>
   </header>
+
+  <main role="main">
