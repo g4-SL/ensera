@@ -1,4 +1,5 @@
 <?php 
+
 function sanitize_output($buffer) {
     $search = array(
         '/\>[^\S ]+/s',  
@@ -16,6 +17,24 @@ function sanitize_output($buffer) {
 }
 
 $p = explode("/", $_SERVER['REQUEST_URI'] );
+
+if($p[1] == "gallery") {
+  $title = "Gallery | Ensera Gallery Borneo";
+  $description = "Gallery";
+} else if($p[1] == "about") {
+  $title = "About | Ensera Gallery Borneo";
+  $description = "About";
+} else if($p[1] == "contact") {
+  $title = "Contact Us | Ensera Gallery Borneo";
+  $description = "Contact Us";
+} else if($p[1] == "404") {
+  $title = "Not Found | Ensera Gallery Borneo";
+  $description = "Contact Us";
+} else {
+  $title = "Ensera Gallery Borneo";
+  $description = "Ensera Gallery Borneo";
+}
+
 
 $recursive = true;
 $search_in = array('html', 'htm', 'php');
@@ -77,6 +96,7 @@ include './header.php';
 
   if($notfound == true){
     http_response_code(404);
+    include 'templates/404.php';
   }
 
 include './footer.php';

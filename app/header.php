@@ -5,8 +5,8 @@
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
-  <title>Ensara</title>
-  <meta name="description" content="">
+  <title><?php echo "$title" ?></title>
+  <meta name="description" content="<?php echo "$description" ?>">
   <meta name="author" content="">
 
   <!-- Mobile Specific Metas
@@ -42,25 +42,26 @@
 <div class="wrapper">
   <header class="navigation" role="banner">
     <div class="container" id="top-nav-container">
-      +6088-888888 | info@ensera.com
+      <span>+6088-888888 | info@enseragalleryborneo.com</span>
       <ul>
+        <li class="search-icon"><input type="text" placeholder="Search"></li>
         <li><img src="../images/social/fb.png"></li>
         <li><img src="../images/social/ig.png"></li>
         <li><img src="../images/social/twitter.png"></li>
       </ul>
     </div>
     <div class="container" id="nav-container">
-      <a href="javascript:void(0)" class="logo">
+      <a href="./" class="logo">
         <img src="images/header.png" alt="Logo Image">
       </a>
-      <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+      <a href="javascript:void(0)" class="navigation-menu-button hide-non-mobile" id="js-mobile-menu"></a>
       <nav role="navigation">
-        <ul class="navigation-menu">
+        <ul id="js-navigation-menu" class="navigation-menu">
           <li class="nav-link"><a href="./">Home</a></li>
-          <li class="nav-link"><a href="./about">About Us</a></li>
+          <li class="nav-link"><a href="./about">About</a></li>
           <li class="nav-link"><a href="./gallery">Gallery</a></li>
-          <li class="nav-link"><a href="./contact">Contact</a>
-          </li>
+          <li class="nav-link"><a href="./contact">Contact Us</a></li>
+          <li class="nav-link hide-non-mobile"><input type="text" placeholder="Search"></li>
         </ul>
       </nav>
     </div>

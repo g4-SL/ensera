@@ -30,8 +30,39 @@ $(function() {
   });
 });
 
+// contact form email
+$(function() {
+  var form = $('#contact-form');
+
+  $(form).submit(function(event) {
+    event.preventDefault();
+
+    $.ajax({
+      type: 'POST',
+      url: '../php/mail.php',
+      data: $(form).serialize()
+    })
+    .done(function(response) {
+      console.log(response);
+      if (response == 'sent'){
+        alert("sucessfully sent email");
+      }
+      else if (response == 'mail_not_sent'){
+        alert("Sorry. Unable to send email.");
+      }
+      else{
+        alert(response);
+      }
+    })
+    .fail(function(data) {
+      alert("failed to send email");
+    });
+  });
+});
+
 
 $(document).ready(function() {
+
   $("#highlight").owlCarousel({
     slideSpeed : 300,
     paginationSpeed : 400,
@@ -45,8 +76,8 @@ $(document).ready(function() {
     // itemsTablet: false,
     // itemsMobile : false
   });
+
   var menuToggle = $('#js-mobile-menu').unbind();
-  $('#js-navigation-menu').removeClass("show");
 
   menuToggle.on('click', function(e) {
     e.preventDefault();
@@ -62,7 +93,7 @@ $(document).ready(function() {
     var temp;
     var res = data.url_group[0].gallery;
     for(var i in res){
-      temp = '<figure class="' + res[i].type +'"><a><img src="' + res[i].image + '" alt="" /></a></figure>';
+      temp = '<figure class="' + res[i].type +'"><a><img src="' + res[i].image + '" alt="" /><div class="img-overlay-hover"></div></a></figure>';
       $('#gallery-section #all .tab-content').append(temp);
       $('#gallery-section #' + res[i].type + ' .tab-content').append(temp);
     }

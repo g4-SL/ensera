@@ -1,20 +1,21 @@
 @import "bourbon";
 @import "neat";
 
-$default-dark-colour: #d6cac7;
-$wrapper-background: #fff;
+$default-dark-colour: #908847;
+$wrapper-background: #f1f1f1;
 $body-background: #731405;
-$color-pop: #bc2626;
+$color-pop: lighten($default-dark-colour, 1);
 $default-margin: 20px;
-$mobile-size: em(480);
-$tablet-size: em(720);
-$desktop-size: em(960);
-$largedesktop-size: em(1050);
+$v-padding-input: 7px 10px;
+$mobile: em(480);
+$tablet: em(720);
+$desktop: em(960);
+$largedesktop: em(1050);
 
-$mobile: new-breakpoint(max-width $mobile-size 12);
-$tablet: new-breakpoint(min-width $mobile-size max-width $tablet-size 12);
-$desktop: new-breakpoint(min-width $tablet-size max-width $desktop-size 12);
-$largedesktop: new-breakpoint(min-width $largedesktop-size 12);
+$mobile-size: new-breakpoint(max-width $mobile 12);
+$tablet-size: new-breakpoint(min-width $mobile max-width $tablet 12);
+$desktop-size: new-breakpoint(min-width $tablet max-width $desktop 12);
+$largedesktop-size: new-breakpoint(min-width $largedesktop 12);
 
 @mixin horizontal-list($list-margin: 0 8px 0 0, $margin-btm-ul: 0) {
   display: inline-block;
@@ -28,6 +29,9 @@ $largedesktop: new-breakpoint(min-width $largedesktop-size 12);
     padding: 0;
     position: relative;
     &:last-of-type {margin-right: 0;}
+    &:hover {
+      cursor: pointer;
+    }
     a {
       display: inline-block;
       font-family: 'Roboto Slab', serif;
@@ -39,9 +43,11 @@ $largedesktop: new-breakpoint(min-width $largedesktop-size 12);
 }
 
 @mixin border-img-link {
-  a > img{
-    border: 1px solid $default-dark-colour;
-    box-shadow: 0 1px 10px #e2e2e2;
+  $border-base-color: #dadada;
+
+  img{
+    border: 1px solid $border-base-color;
+    box-shadow: 0 1px 10px lighten($border-base-color, 1);
     display: block;
     padding: 4px;
     width: 100%;
@@ -55,12 +61,16 @@ $largedesktop: new-breakpoint(min-width $largedesktop-size 12);
 
 @include font-face("open-sans", "/fonts/OpenSans-Regular", $file-formats: ttf);
 
-p, h4, li {
-  font-family: 'open-sans';
+p, h4, li, span {
+  font-family: 'Helvetica', serif;
+  line-height: 1.5;
+}
+
+p, span {
+  font-size: em(14);
 }
 
 h1 {
-  background: #e2e2e2;
   font-family: 'Roboto Slab', serif;
   font-size: 1.4em;
   letter-spacing: 2pt;
@@ -70,11 +80,18 @@ h1 {
   text-transform: uppercase;
 }
 
-.header-title {
-  @include outer-container(90%);
-  border: 1px solid $default-dark-colour;
-  margin: 20px auto;
-  padding: 3px;
+h1.main-title {
+  -moz-box-shadow:  
+    inset 0px 54px 40px -55px #bbb,
+    inset 0px -54px 40px -55px #bbb;
+  box-shadow:         
+    inset 0px 54px 40px -55px #bbb,
+    inset 0px -54px 40px -55px #bbb;
+  -webkit-box-shadow: 
+    inset 0px 54px 40px -55px #bbb,
+    inset 0px -54px 40px -55px #bbb;
+  background: url('../images/top-bg.jpg');
+  color: #000;
 }
 
 h4 {
@@ -82,40 +99,125 @@ h4 {
   text-transform: uppercase;
 }
 
+input[type="text"], input[type="email"], textarea {
+  @include fill-parent;
+  border: 2px solid #e3e3e3;
+  font-family: 'Roboto Slab', serif;
+  font-size: em(14);
+  margin-bottom: 10px;
+  padding: $v-padding-input;
+}
+
+input[type="submit"] {
+  @include background(linear-gradient(lighten($default-dark-colour, 6), darken($default-dark-colour, 6)) left repeat);
+  border: 0;
+  border-radius: 7px;
+  box-shadow: 0px 4px 7px #ababab;
+  color: white;
+  font-family: 'Roboto Slab', serif;
+  font-size: em(14);
+  letter-spacing: 1pt;
+  padding: 10px 30px;
+  text-transform: uppercase; 
+
+  &:hover {
+    background: darken($default-dark-colour, 6);
+    cursor: pointer;
+  }
+}
+
 header {
-  $header-background: #1F1A16;
+  $header-background: #282828;
   $border-color: transparentize($header-background, 0.93);
+  $horizontal-bar-mode: new-breakpoint(min-width $tablet 12);
 
   @include clearfix;
-  border-top: 5px solid #1F1A16;
+  border-top: 5px solid darken($default-dark-colour, 10);
 
   #top-nav-container {
-    padding-top: 10px;
+    @include clearfix;
+    font-size: em(12);
     padding-bottom: 10px;
+    padding-top: 10px;
+
+    span {
+      display: none;
+    }
 
     ul {
       @include horizontal-list;
       float: right;
+
+      li.search-icon {
+        display: none;
+      }
     }
 
     img {
       width: 16px;
     }
+
+    input[type="text"] {
+      background: url(../images/search.png) no-repeat scroll 97% center;
+      background-size: 14px;
+      font-size: em(12);
+      margin-bottom: 0;
+      padding: 2px 5px;
+    }
+
+    @include media($horizontal-bar-mode) {
+      font-size: em(16);
+
+      ul > li.search-icon, span {
+        display: inline-block;
+      }
+    }
   }
 
   #nav-container {
     @include clearfix;
-    border-top: 2px solid $border-color;
     border-bottom: 2px solid $border-color;
-    padding-top: 10px;
+    border-top: 2px solid $border-color;
     padding-bottom: 10px;
-  }
+    padding-top: 10px;
 
-  .logo {
-    float: left;
+    .logo {
+      float: left;
+      width: 230px;
 
-    img {
-      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+
+    @include media($tablet) {
+
+      .logo {
+        @include span-columns(3.5 of 12, block-collapse);
+      }
+
+      nav {
+        @include span-columns(8.5 of 12, block-collapse);
+
+        li:not(:nth-last-child(-n+2)) {
+          margin-right: 30px;        
+        }
+      }
+    }
+
+    @include media($desktop) {
+
+      .logo {
+        @include span-columns(3 of 12, block-collapse);
+      }
+
+      nav {
+        @include span-columns(9 of 12, block-collapse);
+
+        li:not(:nth-last-child(-n+2)) {
+          margin-right: 50px;        
+        }
+      }
     }
   }
 
@@ -124,78 +226,135 @@ header {
 
       .navigation-menu {
         @include horizontal-list;
-        padding: 15px 0;
+        @include fill-parent;
+        display: none;
         float: right;
 
         li {
-          margin-right: 50px;
+          border-bottom: 1px solid #d6cac7;
+          display: block;
+          margin-right: 0;
+          padding: 10px 0;
+          text-align: center;
 
-          @include media($mobile) {
-            @include fill-parent;
+          &:last-child {
+            border-bottom: 0;
           }
 
-          @include media($tablet) {
-            @include fill-parent;
+          &:nth-last-child(-n+2) {
+            margin-right: 0;
           }
         }
 
         a {
           color: #191919;
           font-size: em(14);
-          position: relative;
+        }
 
-          &:before {    
-            @include transition(all 0.3s ease-in-out 0s);
-            @include transform(scaleX(0));
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 3px;
-            top: -28px;
-            left: 0;
-            background-color: $color-pop;
-            visibility: hidden;
+        @include media($horizontal-bar-mode) {
+          display: block;
+          padding: 15px 0;
+          width: auto;
+
+          li {
+            border-bottom: 0;
+            display: inline-block;
+            padding: 0;
+            text-align: left;
           }
 
-          &:hover:before {
-            @include transform(scaleX(1));
-            visibility: visible;
+          a {
+            position: relative;
+
+            &:before {    
+              @include transition(all 0.3s ease-in-out 0s);
+              @include transform(scaleX(0));
+              background-color: $color-pop;
+              content: '';
+              height: 3px;
+              left: 0;
+              position: absolute;
+              top: -28px;
+              visibility: hidden;
+              width: 100%;
+            }
+
+            &:hover:before {
+              @include transform(scaleX(1));
+              visibility: visible;
+            }
           }
         }
+      }
+
+      input[type="text"] {
+        background: url(../images/search.png) no-repeat scroll 97% center;
+        background-size: 14px;
+        margin-bottom: 0;
+        width: 70%;
       }
     }
   }
 
   .navigation-menu-button {
-    @include media($tablet-size) {
-      display: none;
+    float: right;
+    padding-left: 1.25em;
+    position: relative;
+
+    &:before {
+      background: #5e5e5e;
+      box-shadow: 
+        0 0.45em 0 0 #5e5e5e,
+        0 0.9em 0 0 #5e5e5e;
+      content: '';
+      height: 0.2em;
+      left: 0;
+      position: absolute;
+      top: 1em;
+      width: 1.5em;
+    }
+
+  }
+
+  .hide-non-mobile {
+    @include media($horizontal-bar-mode) {
+      display: none !important;
     }
   }
 }
 
 body {
-  @include background-image(url('../images/hbg.jpg'));
+  // @include background-image(url('../images/hbg.jpg'));
+  @include background-image(radial-gradient(transparent, #47291f), url('../images/abg.jpg'));
 	margin: 0;
 }
 
 figure {margin: 0;}
 
 .wrapper {
-  @include outer-container(em(800));
+  @include outer-container(93%);
   background: $wrapper-background;
 
-  @include media($desktop-size) {
-    @include outer-container(em(900));
+  @include media($tablet) {
+    @include outer-container(93%);
   }
 
-  @include media($largedesktop-size) {
+  @include media($largedesktop) {
     @include outer-container(em(1050));
   }
 }
 
 .container {
   @include fill-parent;
-  padding: 35px 25px 0;
+  padding: 15px 12px 0;
+
+  @include media($mobile) {
+    padding: 15px 18px 0;
+  }
+
+  @include media($tablet) {
+    padding: 15px 25px 0;
+  }
 }
 
 #base {
@@ -203,8 +362,7 @@ figure {margin: 0;}
     margin-bottom: $default-margin;
   }
   #brief {
-    @include span-columns(9);
-    @include shift(1.5);
+    @include fill-parent;
     text-align: center;
   }
   ul.browse-category {
@@ -212,13 +370,20 @@ figure {margin: 0;}
     margin-top: $default-margin;
     
     li {
-      @include span-columns(4);
+      @include fill-parent;
       @include border-img-link;
       text-align: center;
 
       @include media ($mobile) {
-        @include fill-parent;
+        @include span-columns(4);
       }
+    }
+  }
+
+  @include media($desktop) {
+    #brief {
+      @include span-columns(9);
+      @include shift(1.5);
     }
   }
 }
@@ -234,17 +399,16 @@ figure {margin: 0;}
       padding: 2px;
 
       li {
-        @include span-columns(36 of 144);
+        @include fill-parent;
         border: 1px solid darken($default-dark-colour, 10);
+        margin-bottom: 2px;
         padding: 7px 0;
 
-        a {
-          color: #000;
-          font-size: em(12);
+        &:last-child {
+          margin-bottom: 0;
         }
 
         &:hover, &.is-active {
-          @include transition(all .5s ease);
           background: darken($default-dark-colour, 10);
 
           a {
@@ -252,6 +416,22 @@ figure {margin: 0;}
             font-style: italic;
           }
         }
+
+        @include media ($mobile) {
+          @include span-columns(36 of 144);
+          margin-bottom: 0;
+        }
+
+        @include media ($desktop) {
+          &:hover, &.is-active {
+            @include transition(all .5s ease);
+          }
+        }
+      }
+
+      a {
+        color: #000;
+        font-size: em(12);
       }
     }
   }
@@ -263,30 +443,33 @@ figure {margin: 0;}
 
     li:not(.is-open) {
       display: none;
+    } 
+
+    li:hover {
+      cursor: pointer;
     }
 
     figure {
-      @include span-columns(4);
-      @include omega(3n);
+      @include fill-parent;
       @include border-img-link;
       display: inline-block;
       margin-bottom: 20px;
 
       @include media ($mobile) {
-        @include fill-parent;
+        @include span-columns(6);
+        @include omega(2n);
       }
 
       @include media ($tablet) {
-        @include span-columns(6);
-        @include omega-reset(3n);
-        @include omega(2n);
+        @include span-columns(4);
+        @include omega-reset(2n);
+        @include omega(3n);
       }
     }
   }
 }
 
 #contact {
-  $v-padding-form: 7px 10px;
 
   .row {
     @include row;
@@ -294,22 +477,17 @@ figure {margin: 0;}
   }
 
   form{
-    @include span-columns(7 of 12);
+    @include fill-parent;
 
     input[type="text"], input[type="email"], textarea {
-      @include span-columns(15 of 20);
-      @include omega(2n);
+      @include fill-parent;
     }
 
     .label-wrapper {
-      @include span-columns(5 of 20);
       @include background-image(url("../images/arrow.png"));
       background-position: right center;
       background-repeat: no-repeat;
-
-      label {
-        @include span-columns(11 of 12);
-      }
+      display: none;
     }
 
     .btn-wrapper {
@@ -319,30 +497,23 @@ figure {margin: 0;}
   } 
 
   #info {
-    @include span-columns(5 of 12);
-    background: #e2e2e2;
+    @include fill-parent;
+    @include background(url(../images/top-bg.jpg));
+    border-top: 7px solid darken($default-dark-colour, 10);
+    margin-bottom: 20px;
     padding: 15px;
   }
 
   label {
     background-color: $default-dark-colour;
-    border: 3px solid darken($default-dark-colour, 2);
+    border: 2px solid darken($default-dark-colour, 2);
     color: #fff;
     font-family: 'Roboto Slab', serif;
     font-size: em(12);
     font-style: italic;
     letter-spacing: 2pt;
-    padding: $v-padding-form;
+    padding: $v-padding-input;
     text-transform: uppercase;
-  }
-
-  input[type="text"], input[type="email"], textarea {
-    @include fill-parent;
-    border: 2px solid #e3e3e3;
-    font-family: 'Roboto Slab', serif;
-    font-size: em(14);
-    margin-bottom: 20px;
-    padding: $v-padding-form;
   }
 
   textarea {
@@ -353,6 +524,41 @@ figure {margin: 0;}
     width: 100%;
     height: 400px;
     background-color: #CCC;
+  }
+
+  @include media ($tablet) {
+    form {
+      @include span-columns(7 of 12);
+    }
+
+    #info {
+      @include span-columns(5 of 12);
+    }
+  }
+
+  @include media ($desktop) {
+    form {
+      @include span-columns(7.5 of 12);
+
+      input[type="text"], input[type="email"], textarea {
+        @include span-columns(15 of 20);
+        @include omega(2n);
+        font-size: em(14);
+        margin-bottom: 20px;
+      }
+
+      .label-wrapper {
+        @include span-columns(5 of 20);
+
+        label {
+          @include span-columns(11 of 12);
+        }
+      }
+    }
+
+    #info {
+      @include span-columns(4.5 of 12);
+    }
   }
 
 }

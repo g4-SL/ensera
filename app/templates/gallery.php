@@ -1,7 +1,5 @@
 <section id="gallery">
-	<div class="header-title">
-		<h1>Gallery</h1>
-	</div>
+	<h1 class="main-title">Gallery</h1>
 	<div class="container">
 		<nav class="gallery-nav">
 			<ul>
