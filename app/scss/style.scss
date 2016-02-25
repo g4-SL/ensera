@@ -449,11 +449,36 @@ figure {margin: 0;}
       cursor: pointer;
     }
 
+    .img-overlay-hover {
+      @include transition(all .5s ease);
+      @include background(url(../images/zoom.png), linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)))
+      background-position: center;
+      background-repeat: no-repeat;
+      bottom: 0;
+      left: 0;
+      margin: 4px;
+      opacity: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      a.see-more {
+        color: #fff;
+        font-size: 2em;
+        width: 64px;
+      }
+    }
+
     figure {
       @include fill-parent;
       @include border-img-link;
       display: inline-block;
       margin-bottom: 20px;
+      position: relative;
+
+      &:hover .img-overlay-hover {
+        opacity: 1;
+      }
 
       @include media ($mobile) {
         @include span-columns(6);

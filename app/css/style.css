@@ -423,16 +423,38 @@ figure {
     display: none; }
   #gallery #gallery-section li:hover {
     cursor: pointer; }
+  #gallery #gallery-section .img-overlay-hover {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    background: url(../images/zoom.png), -webkit-linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    background: url(../images/zoom.png), linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    background-position: center;
+    background-repeat: no-repeat;
+    bottom: 0;
+    left: 0;
+    margin: 4px;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0; }
+    #gallery #gallery-section .img-overlay-hover a.see-more {
+      color: #fff;
+      font-size: 2em;
+      width: 64px; }
   #gallery #gallery-section figure {
     width: 100%;
     display: inline-block;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    position: relative; }
     #gallery #gallery-section figure img {
       border: 1px solid #dadada;
       box-shadow: 0 1px 10px #dddddd;
       display: block;
       padding: 4px;
       width: 100%; }
+    #gallery #gallery-section figure:hover .img-overlay-hover {
+      opacity: 1; }
     @media screen and (min-width: 30em) {
       #gallery #gallery-section figure {
         float: left;

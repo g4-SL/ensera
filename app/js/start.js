@@ -16,7 +16,7 @@ function getAnchor(url)
 }
 
 $(function() {
-  $('.accordion-tabs-minimal').on('click', 'figure a', function(event) {
+  $('.accordion-tabs-minimal').on('click', 'figure', function(event) {
     $(".modal .modal-fade-screen").css({"opacity": "1", "visibility": "visible"});
     $('.modal .modal-fade-screen .modal-inner img').attr("src", $(this).find('img').attr('src'));
   });
@@ -93,7 +93,7 @@ $(document).ready(function() {
     var temp;
     var res = data.url_group[0].gallery;
     for(var i in res){
-      temp = '<figure class="' + res[i].type +'"><a><img src="' + res[i].image + '" alt="" /><div class="img-overlay-hover"></div></a></figure>';
+      temp = '<figure class="' + res[i].type +'"><img src="' + res[i].image + '" alt="" /><div class="img-overlay-hover"><a class="see-more"></a></div></figure>';
       $('#gallery-section #all .tab-content').append(temp);
       $('#gallery-section #' + res[i].type + ' .tab-content').append(temp);
     }
