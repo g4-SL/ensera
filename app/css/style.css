@@ -265,7 +265,8 @@ figure {
   max-width: 93%;
   margin-left: auto;
   margin-right: auto;
-  background: #f1f1f1; }
+  background: #f1f1f1;
+  min-height: 100vh; }
   .wrapper::after {
     clear: both;
     content: "";
@@ -607,9 +608,6 @@ figure {
   text-align: left;
   visibility: hidden;
   z-index: 99999999999; }
-  @media screen and (min-width: 30em) and (max-width: 45em) {
-    .modal .modal-fade-screen {
-      padding-top: 10em; } }
 
 .modal .modal-close {
   position: absolute;

@@ -324,7 +324,6 @@ header {
 }
 
 body {
-  // @include background-image(url('../images/hbg.jpg'));
   @include background-image(radial-gradient(transparent, #47291f), url('../images/abg.jpg'));
 	margin: 0;
 }
@@ -334,6 +333,7 @@ figure {margin: 0;}
 .wrapper {
   @include outer-container(93%);
   background: $wrapper-background;
+  min-height: 100vh;
 
   @include media($tablet) {
     @include outer-container(93%);
@@ -607,10 +607,6 @@ figure {margin: 0;}
     text-align: left;
     visibility: hidden;
     z-index: 99999999999;
-
-    @include media($tablet-size) {
-      padding-top: 10em;
-    }
   }
 
   .modal-close {
